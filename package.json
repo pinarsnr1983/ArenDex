@@ -1,20 +1,35 @@
 {
-  "license": "0BSD",
-  "main": "index.js",
+  "name": "arendex",
+  "version": "1.0.0",
+  "main": "main.js",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "pack": "electron-builder"
   },
   "dependencies": {
-    "expo": "~54.0.37",
-    "expo-status-bar": "~3.0.9",
-    "react": "19.1.0",
-    "react-native": "0.81.5",
-    "@expo/vector-icons": "^15.0.3",
-    "react-native-paper": "4.9.2"
-    "@react-native-async-storage/async-storage": "1.23.1"
+    "@react-native-async-storage/async-storage": "1.23.1",
+    "expo": "~51.0.0",
+    "react": "18.2.0",
+    "react-native": "0.74.1"
   },
-  "private": true
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.pinar.arendex",
+    "productName": "ArenDex",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
 }
