@@ -1,0 +1,30 @@
+name: Build Exe
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Kodları İndir
+      uses: actions/checkout@v3
+
+    - name: Node.js Kurulumu
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Bağımlılıkları Yükle
+      run: npm install
+
+    - name: Expo Web Çıktısı Al
+      run: npx expo export
+
+    - name: Electron ve Builder Kur
+      run: npm install electron electron-builder --save-dev
+
+    - name: Exe Dosyasını Derle
+      run: npx electron-builder --win
