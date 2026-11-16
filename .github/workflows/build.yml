@@ -17,6 +17,9 @@ jobs:
       with:
         node-version: 20
 
+    - name: Async Storage Paketini Kur
+      run: npm install @react-native-async-storage/async-storage
+
     - name: Bağımlılıkları Yükle
       run: npm install
 
