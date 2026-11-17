@@ -1,10 +1,7 @@
 {
   "name": "arendex",
   "version": "1.0.0",
-  "main": "main.js",
-  "expo": {
-    "entryPoint": "./index.js"
-  },
+  "main": "index.js",
   "scripts": {
     "start": "expo start",
     "pack": "electron-builder"
