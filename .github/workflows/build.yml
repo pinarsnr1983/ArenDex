@@ -33,3 +33,9 @@ jobs:
 
     - name: Exe Dosyasını Derle
       run: npx electron-builder --win --publish never
+
+    - name: Exe Dosyasını Kaydet (Artifacts)
+      uses: actions/upload-artifact@v3
+      with:
+        name: ArenDex-Setup
+        path: release/*.exe
