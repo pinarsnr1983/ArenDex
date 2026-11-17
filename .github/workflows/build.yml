@@ -27,8 +27,15 @@ jobs:
       run: npx expo export --clear
 
     - name: HTML Dosyasındaki Yolları Göreceli Yap (Beyaz Ekran Çözümü)
+      shell: node0
       run: |
-        node -e "const fs = require('fs'); const path = 'dist/index.html'; if (fs.existsSync(path)) { let html = fs.readFileSync(path, 'utf8'); html = html.replace(/href=\"\//g, 'href=\"./').replace(/src=\"\//g, 'src=\"./'); fs.writeFileSync(path, html); }"
+        const fs = require('fs');
+        const path = 'dist/index.html';
+        if (fs.existsSync(path)) {
+          let html = fs.readFileSync(path, 'utf8');
+          html = html.replace(/href="\//g, 'href="./').replace(/src="\//g, 'src="./');
+          fs.writeFileSync(path, html);
+        }
 
     - name: Main.js Kopyala ve package.json Düzelt
       run: |
