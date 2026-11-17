@@ -26,8 +26,8 @@ jobs:
     - name: Expo Web Çıktısı Al
       run: npx expo export --clear
 
-    - name: HTML Dosyasındaki Yolları Göreceli Yap (Beyaz Ekran Çözümü)
-      run: node -e "const fs = require('fs'); const p = 'dist/index.html'; if(fs.existsSync(p)){ fs.writeFileSync(p, fs.readFileSync(p, 'utf8').replaceAll('href=\"/', 'href=\"./').replaceAll('src=\"/', 'src=\"./')); }"
+    - name: HTML Dosyasındaki Yolları Düzelt
+      run: node fix-html.js
 
     - name: Main.js Kopyala ve package.json Düzelt
       run: |
