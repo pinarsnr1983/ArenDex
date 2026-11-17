@@ -20,16 +20,14 @@ jobs:
     - name: Bağımlılıkları Yükle
       run: npm install
 
-    - name: Expo İçin Main Alanını Kaldır
+    - name: Metro Engellemek İçin Main'i Geçici Kaldır
       run: node -e "const fs = require('fs'); const p = JSON.parse(fs.readFileSync('package.json', 'utf8')); delete p.main; fs.writeFileSync('package.json', JSON.stringify(p, null, 2));"
 
     - name: Expo Web Çıktısı Al
       run: npx expo export --clear
 
-    - name: Main.js Dosyasını Kök Dizine Taşı ve Main Alanını Geri Getir
-      run: |
-        copy electron\main.js main.js
-        node -e "const fs = require('fs'); const p = JSON.parse(fs.readFileSync('package.json', 'utf8')); p.main = 'main.js'; fs.writeFileSync('package.json', JSON.stringify(p, null, 2));"
+    - name: Main.js Dosyasını Kök Dizine Kopyala
+      run: copy electron\main.js main.js
 
     - name: Exe Dosyasını Derle
-      run: npx electron-builder --win
+      run: npx electron-builder --win --publish never
