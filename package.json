@@ -1,7 +1,9 @@
 {
   "name": "arendex",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "ArenDex Desktop App",
+  "author": "Aren",
+  "main": "main.js",
   "scripts": {
     "start": "expo start",
     "pack": "electron-builder"
@@ -14,7 +16,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
-    "electron": "^30.0.0",
+    "electron": "^30.5.1",
     "electron-builder": "^24.13.3"
   },
   "build": {
