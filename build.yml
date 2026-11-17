@@ -1,14 +1,33 @@
 name: Build Exe
-on: [push]
+
+on:
+  push:
+    branches: [ main ]
+
 jobs:
   build:
     runs-on: windows-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - run: npm install
-      - run: npx expo export
-      - run: npm install electron electron-builder --save-dev
-      - run: npx electron-builder --win
+    - name: Kodları İndir
+      uses: actions/checkout@v3
+
+    - name: Node.js Kurulumu
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+
+    - name: Bağımlılıkları Yükle
+      run: npm install
+
+    - name: Expo Web Çıktısı Al
+      run: npx expo export
+
+    - name: Electron ve Builder Kur
+      run: npm install electron electron-builder --save-dev
+
+    - name: package.json Main Alanını Güncelle
+      run: node -e "const fs = require('fs'); const p = JSON.parse(fs.readFileSync('package.json', 'utf8')); p.main = 'main.js'; fs.writeFileSync('package.json', JSON.stringify(p, null, 2));"
+
+    - name: Exe Dosyasını Derle
+      run: npx electron-builder --win
