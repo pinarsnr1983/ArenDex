@@ -20,8 +20,14 @@ jobs:
     - name: Bağımlılıkları Yükle
       run: npm install
 
+    - name: package.json Main Alanını Geçici Düzenle
+      run: node -e "const fs = require('fs'); const p = JSON.parse(fs.readFileSync('package.json', 'utf8')); p.main = 'index.js'; fs.writeFileSync('package.json', JSON.stringify(p, null, 2));"
+
     - name: Expo Web Çıktısı Al
       run: npx expo export --clear
+
+    - name: package.json Main Alanını main.js Yap
+      run: node -e "const fs = require('fs'); const p = JSON.parse(fs.readFileSync('package.json', 'utf8')); p.main = 'main.js'; fs.writeFileSync('package.json', JSON.stringify(p, null, 2));"
 
     - name: Exe Dosyasını Derle
       run: npx electron-builder --win
