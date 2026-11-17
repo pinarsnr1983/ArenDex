@@ -12,7 +12,8 @@ function createWindow() {
     }
   });
 
-  win.loadFile(path.join(__dirname, '..', 'dist', 'index.html'));
+  // dist/index.html dosyasını kesin olarak gösteriyoruz
+  win.loadFile(path.join(__dirname, '../dist/index.html'));
 }
 
 app.whenReady().then(() => {
