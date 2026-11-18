@@ -8,12 +8,14 @@ function createWindow() {
     title: "ArenDex",
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false
+      contextIsolation: false,
+      webSecurity: false // Yerel dosya yükleme kısıtlamalarını kaldırır, beyaz ekranı önler
     }
   });
 
-  // dist/index.html dosyasını kesin olarak gösteriyoruz
-  win.loadFile(path.join(__dirname, '../dist/index.html'));
+  // index.html dosyasını mutlak yolla yüklüyoruz
+  const indexPath = path.join(app.getAppPath(), 'dist', 'index.html');
+  win.loadURL(`file://${indexPath}`);
 }
 
 app.whenReady().then(() => {
