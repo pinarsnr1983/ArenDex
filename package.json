@@ -1,37 +1,15 @@
-{
-  "name": "arendex",
-  "version": "1.0.0",
-  "description": "ArenDex Desktop App",
-  "author": "Aren",
-  "main": "main.js",
-  "scripts": {
-    "start": "expo start",
-    "pack": "electron-builder"
+"build": {
+  "appId": "com.pinar.arendex",
+  "productName": "ArenDex",
+  "directories": {
+    "output": "release"
   },
-  "dependencies": {
-    "@react-native-async-storage/async-storage": "1.23.1",
-    "expo": "~51.0.0",
-    "react": "18.2.0",
-    "react-native": "0.74.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.20.0",
-    "electron": "^30.5.1",
-    "electron-builder": "^24.13.3"
-  },
-  "build": {
-    "appId": "com.pinar.arendex",
-    "productName": "ArenDex",
-    "directories": {
-      "output": "release"
-    },
-    "files": [
-      "dist/**/*",
-      "main.js",
-      "package.json"
-    ],
-    "win": {
-      "target": "nsis"
-    }
+  "files": [
+    "dist/**/*",
+    "main.js",
+    "package.json"
+  ],
+  "win": {
+    "target": "nsis"
   }
 }
